@@ -298,27 +298,19 @@ select count (roles.role_name)
   --26. Вивести кількість Middle спеціалістів.
 select count (roles.role_name)
   from employees
-    join employee_salary 
-      on employees.id = employee_salary.employee_id
-        join roles_employee 
-          on employees.id = roles_employee.employee_id
-            join salary
-              on salary.id = employee_salary.salary_id
-                join roles
-                  on roles.id = roles_employee.role_id
+    join roles_employee 
+      on employees.id = roles_employee.employee_id
+        join roles
+           on roles.id = roles_employee.role_id
               where roles.role_name like '%Middle%';  
              
   --27. Вивести кількість розробників
 select count (roles.role_name)
   from employees
-    join employee_salary 
-      on employees.id = employee_salary.employee_id
-        join roles_employee 
-          on employees.id = roles_employee.employee_id
-            join salary
-              on salary.id = employee_salary.salary_id
-                join roles
-                  on roles.id = roles_employee.role_id
+     join roles_employee 
+        on employees.id = roles_employee.employee_id
+           join roles
+              on roles.id = roles_employee.role_id
               where roles.role_name like '%dev%';   
              
   --28. Вивести фонд (суму) зарплати розробників.
